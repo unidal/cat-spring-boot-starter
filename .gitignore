@@ -1,0 +1,10 @@
+/**/target/*
+/**/bin/*
+*.iml
+
+# Hidden files
+/**/.*
+!.travis.yml
+!.gitignore
+!.gitattributes
+!.gitmodules
