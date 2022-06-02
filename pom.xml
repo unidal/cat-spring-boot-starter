@@ -6,6 +6,28 @@
   <packaging>jar</packaging>
   <version>1.0-RC1</version>
   <name>cat-spring-boot-starter</name>
+  <description>Spring Boot Support for Cat</description>
+  <url>https://github.com/unidal/cat-spring-boot-starter</url>
+  <scm>
+    <connection>scm:git:git://github.com/unidal/frameworks.git</connection>
+    <developerConnection>scm:git@github.com:unidal/cat-spring-boot-starter.git</developerConnection>
+    <url>https://github.com/unidal/cat-spring-boot-starter</url>
+  </scm>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Frankie Wu</name>
+      <email>qmwu2000@gmail.com</email>
+      <timezone>Asia/Shanghai</timezone>
+      <organization>Unidal.org</organization>
+      <organizationUrl>http://unidal.org</organizationUrl>
+    </developer>
+  </developers>
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
