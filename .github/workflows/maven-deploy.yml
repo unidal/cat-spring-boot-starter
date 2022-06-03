@@ -5,11 +5,12 @@ name: Maven Deploy
 
 on:
   workflow_dispatch:
-    auto_release:
-      description: 'auto release after maven deploy'
-      required: true
-      type: boolean
-      default: false
+    inputs:
+      auto_release:
+        description: 'auto release after maven deploy'
+        required: true
+        type: boolean
+        default: false
 jobs:
   build:
     runs-on: ubuntu-latest
