@@ -15,6 +15,6 @@ import org.unidal.cat.autoconfigure.CatAutoConfiguration;
 public class CatEnabledTest {
    @Test
    public void test() {
-      Assert.assertEquals(true,  Cat.isInitialized());
+      Assert.assertEquals(true,  Cat.getBootstrap().isInitialized());
    }
 }
