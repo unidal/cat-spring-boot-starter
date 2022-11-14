@@ -30,8 +30,7 @@ public class CatInitializer {
    private void initialize() {
       CatProperties.Server server = m_properties.getServer();
       String domain = m_properties.getDomain();
-      int tcpPort = server.getTcpPort();
-      int httpPort = server.getHttpPort();
+      String token = m_properties.getToken();
 
       // bring CAT up
       String userHome = System.getProperty("user.home");
@@ -39,6 +38,6 @@ public class CatInitializer {
 
       catHome.mkdirs();
       System.setProperty("CAT_HOME", catHome.getAbsolutePath());
-      Cat.getBootstrap().initializeByDomain(domain, tcpPort, httpPort, server.getAddresses());
+      Cat.getBootstrap().initialize(domain, server.getEndpoints());
    }
 }

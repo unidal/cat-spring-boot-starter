@@ -20,6 +20,9 @@ public class CatProperties {
    private String m_domain;
 
    @API(status = STABLE, since = "1.0")
+   private String m_token;
+
+   @API(status = STABLE, since = "1.0")
    private Server m_server = new Server();
 
    public String getDomain() {
@@ -28,6 +31,10 @@ public class CatProperties {
 
    public Server getServer() {
       return m_server;
+   }
+
+   public String getToken() {
+      return m_token;
    }
 
    public boolean isEnabled() {
@@ -42,23 +49,23 @@ public class CatProperties {
       m_server = server;
    }
 
+   public void setToken(String token) {
+      m_token = token;
+   }
+
    @Override
    public String toString() {
       return String.format("Properties[enabled=%s, domain=%s, server=%s]", m_enabled, m_domain, m_server);
    }
 
    static class Server {
-      private String m_ips;
+      private String m_hosts;
 
-      private int m_tcpPort = 2280;
-
-      private int m_httpPort = 8080;
-
-      public String[] getAddresses() {
+      public String[] getEndpoints() {
          List<String> list = new ArrayList<>();
 
-         if (m_ips != null) {
-            String[] parts = m_ips.split(",");
+         if (m_hosts != null) {
+            String[] parts = m_hosts.split(",");
 
             for (String part : parts) {
                if (part.trim().length() > 0) {
@@ -70,33 +77,17 @@ public class CatProperties {
          return list.toArray(new String[0]);
       }
 
-      public int getHttpPort() {
-         return m_httpPort;
+      public String getHosts() {
+         return m_hosts;
       }
 
-      public String getIps() {
-         return m_ips;
-      }
-
-      public int getTcpPort() {
-         return m_tcpPort;
-      }
-
-      public void setHttpPort(int httpPort) {
-         m_httpPort = httpPort;
-      }
-
-      public void setIps(String ips) {
-         m_ips = ips;
-      }
-
-      public void setTcpPort(int tcpPort) {
-         m_tcpPort = tcpPort;
+      public void setHosts(String hosts) {
+         m_hosts = hosts;
       }
 
       @Override
       public String toString() {
-         return String.format("[ips: %s, tcp: %s, http: %s]", m_ips, m_tcpPort, m_httpPort);
+         return String.format("[hosts: %s]", m_hosts);
       }
    }
 }
