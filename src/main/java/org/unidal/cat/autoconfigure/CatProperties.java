@@ -20,6 +20,9 @@ public class CatProperties {
    private String m_domain;
 
    @API(status = STABLE, since = "1.0")
+   private String m_home;
+
+   @API(status = STABLE, since = "1.0")
    private String m_token;
 
    @API(status = STABLE, since = "1.0")
@@ -27,6 +30,10 @@ public class CatProperties {
 
    public String getDomain() {
       return m_domain;
+   }
+
+   public String getHome() {
+      return m_home;
    }
 
    public Server getServer() {
@@ -43,6 +50,10 @@ public class CatProperties {
 
    public void setEnabled(boolean enabled) {
       m_enabled = enabled;
+   }
+
+   public void setHome(String home) {
+      m_home = home;
    }
 
    public void setServer(Server server) {

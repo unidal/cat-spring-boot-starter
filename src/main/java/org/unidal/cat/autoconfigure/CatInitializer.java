@@ -3,7 +3,6 @@ package org.unidal.cat.autoconfigure;
 import com.dianping.cat.Cat;
 import org.apiguardian.api.API;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,13 +30,17 @@ public class CatInitializer {
       CatProperties.Server server = m_properties.getServer();
       String domain = m_properties.getDomain();
       String token = m_properties.getToken();
+      String home = m_properties.getHome();
 
       // bring CAT up
-      String userHome = System.getProperty("user.home");
-      File catHome = new File(userHome, ".cat");
+      if (home != null) {
+         System.setProperty("cat.home", home);
+      }
 
-      catHome.mkdirs();
-      System.setProperty("CAT_HOME", catHome.getAbsolutePath());
+      if (token != null) {
+         System.setProperty("cat.token", token);
+      }
+
       Cat.getBootstrap().initialize(domain, server.getEndpoints());
    }
 }
