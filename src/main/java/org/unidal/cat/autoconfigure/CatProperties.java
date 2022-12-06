@@ -1,5 +1,6 @@
 package org.unidal.cat.autoconfigure;
 
+import com.dianping.cat.support.Inets;
 import org.apiguardian.api.API;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,6 +20,10 @@ public class CatProperties {
    @API(status = STABLE, since = "1.0")
    private String m_domain;
 
+   @Value("${server.port}")
+   @API(status = STABLE, since = "1.0")
+   private int m_httpPort;
+
    @API(status = STABLE, since = "1.0")
    private String m_home;
 
@@ -34,6 +39,20 @@ public class CatProperties {
 
    public String getHome() {
       return m_home;
+   }
+
+   public int getHttpPort() {
+      return m_httpPort;
+   }
+
+   public String getNode() {
+      String ip = Inets.IP4.getLocalHostAddress();
+
+      if (m_httpPort > 0) {
+         return ip + ":" + m_httpPort;
+      } else {
+         return ip;
+      }
    }
 
    public Server getServer() {
@@ -66,7 +85,7 @@ public class CatProperties {
 
    @Override
    public String toString() {
-      return String.format("Properties[enabled=%s, domain=%s, server=%s]", m_enabled, m_domain, m_server);
+      return String.format("Properties[enabled=%s, domain=%s, node=%s, server=%s]", m_enabled, m_domain, getNode(), m_server);
    }
 
    static class Server {

@@ -31,6 +31,7 @@ public class CatInitializer {
       String domain = m_properties.getDomain();
       String token = m_properties.getToken();
       String home = m_properties.getHome();
+      int httpPort = m_properties.getHttpPort();
 
       // bring CAT up
       if (home != null) {
@@ -39,6 +40,10 @@ public class CatInitializer {
 
       if (token != null) {
          System.setProperty("cat.token", token);
+      }
+
+      if (httpPort > 0) {
+         System.setProperty("cat.node", m_properties.getNode());
       }
 
       Cat.getBootstrap().initialize(domain, server.getEndpoints());
