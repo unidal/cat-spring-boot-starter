@@ -20,7 +20,7 @@ public class CatProperties {
    @API(status = STABLE, since = "1.0")
    private String m_domain;
 
-   @Value("${server.port}")
+   @Value("${server.port:8080}")
    @API(status = STABLE, since = "1.0")
    private int m_httpPort;
 
@@ -48,7 +48,7 @@ public class CatProperties {
    public String getNode() {
       String ip = Inets.IP4.getLocalHostAddress();
 
-      if (m_httpPort > 0) {
+      if (m_httpPort >= 1024) {
          return ip + ":" + m_httpPort;
       } else {
          return ip;
